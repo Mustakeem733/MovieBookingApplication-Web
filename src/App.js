@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { Route, BrowserRouter, Routes } from "react-router-dom";
+import Registration from "./component/registration/Registration";
+import Login from "./component/login/Login"
+import Home from "./component/admin/Home";
+import UserHome from "./component/user/UserHome";
+import BookingPage from "./component/user/BookingPage";
+import BookedTickets from "./component/admin/BookedTickets";
+import ResetPassword from "./component/login/ResetPassword";
+ 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <div>
+    <BrowserRouter>
+    <Routes>
+        <Route path="/" element={ <Registration/>}></Route>
+        <Route path="/login" element={ <Login/>}></Route>
+        <Route path="/home" element={<Home/>}></Route>
+        <Route path="/userHome" element={<UserHome/>}></Route>
+        <Route path="/bookingPage/:movieName/:theatreName/:noOfTicketsAvailable" element={<BookingPage/>} ></Route>
+        <Route path="/bookedTickets/:movieName" element={<BookedTickets/>}></Route>
+        <Route path="/resetPassword" element={<ResetPassword/>}></Route>
+      </Routes>
+    </BrowserRouter>
+   </div>
+
   );
 }
 
